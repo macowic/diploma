@@ -1,20 +1,19 @@
-from pyexpat import model
 from django.contrib import admin
 
-from .models import (
+from cars.models import (
     Car,
+    Mark,
     Category,
-    Mark
 )
 
 class CarAdmin(admin.ModelAdmin):
-    model = Car
-    readonly_fields = (
+
+    readonly_fields: tuple = (
         'datetime_deleted',
         'datetime_created',
         'datetime_updated',
     )
 
-admin.site.register(Car, CarAdmin)
-admin.site.register(Category)
 admin.site.register(Mark)
+admin.site.register(Category)
+admin.site.register(Car, CarAdmin)
